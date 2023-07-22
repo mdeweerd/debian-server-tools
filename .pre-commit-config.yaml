@@ -56,6 +56,14 @@ repos:
     hooks:
       - id: beautysh
         exclude: ^monitoring/cse/can-send-email.sh|monitoring/syslog-errors.sh|monitoring/syslog-errors-infrequent|security/fail2ban-leanmail/dnsbl-generate.sh$
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.9.0
+    hooks:
+      - id: shellcheck
+        files: package/quicklz-build.sh
+        args: ["-P=/mnt","-x"]
+        shell: ls
+        # args: ["--severity=warning"]  # Optionally only show errors and warnings
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.6.0
     hooks:
