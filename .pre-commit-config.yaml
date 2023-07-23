@@ -60,9 +60,8 @@ repos:
     rev: v0.9.0
     hooks:
       - id: shellcheck
-        files: package/quicklz-build.sh
-        args: ["-P=/mnt","-x"]
-        shell: ls
+        # Change the entry to make this work on cygwin
+        entry: -v.:/mnt --workdir=/mnt docker.io/koalaman/shellcheck:v0.9.0
         # args: ["--severity=warning"]  # Optionally only show errors and warnings
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.6.0
